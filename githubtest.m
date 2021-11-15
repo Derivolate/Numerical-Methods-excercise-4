@@ -1,3 +1,3 @@
 %Test Github
 
-fprintf('y r u gay?')
+fprintf('test')
