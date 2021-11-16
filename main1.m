@@ -9,7 +9,7 @@ dx = D/100;
 CFL = 1;
 dt = dx*CFL;
 tend
-uini = [0:dx:D];
+uini = zeros(100,1);
 sol = uini;
 
 for t = 0:dt:tend
