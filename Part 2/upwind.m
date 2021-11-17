@@ -1,4 +1,4 @@
-function solnext = upwind2(sol,dt,dx,u0,Nx,A)
+function solnext = upwind(sol,dt,dx,u0,Nx,A)
 lastrow = sol(:,end); %obtaining the last time step to calculate the next time step
 
 v=1; % velocity of the fluid

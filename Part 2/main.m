@@ -31,7 +31,7 @@ end
 A = sparse(A);
 for t = 0:dt:tend
     u0 = boundary(t);
-    sol = upwind2(sol,dt,dx,u0,Nx,A);
+    sol = upwind(sol,dt,dx,u0,Nx,A);
 end
 %%%%%%%%%
 %%%%% plot
