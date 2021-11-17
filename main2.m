@@ -15,9 +15,20 @@ tend = 6; % maximum time
 uini = zeros(Nx,1);
 uini(:) = Tcool; % specifying initial conditions
 sol = uini;
+%%upwind
+lambda = dt/dx; % CFL number
+alphajminus1 = v*lambda; % factor of u_{j-1}^n
+betaj = 1-lambda*v-dt*alpha; %factor of u_{j}^n
+A = zeros(Nx-1); % Matrix A that is used to calculate the next timestep
+A(1,1) = betaj;
+for k = 2:Nx-1
+    A(k,k-1) = alphajminus1;
+    A(k,k) = betaj;
+end
+A = sparse(A);
 for t = 0:dt:tend
     u0 = boundary(t);
-    sol = upwind2(sol,dt,dx,u0,Nx);
+    sol = upwind2(sol,dt,dx,u0,Nx,A);
 end
 %%%%% plot
 x = linspace(0,5,length(sol(:,1)));
