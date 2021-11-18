@@ -1,6 +1,5 @@
 function solnext = upwind(sol,dt,dx,u0,Nx)
 lastrow = sol(:,end); %obtaining the last time step to calculate the next time step 
-lambda = dt/dx; % CFL number
 a=1; % transport velocity
 alpha = a*dt/dx; % factor of u_{j-1}^n
 beta = 1-a*dt/dx; %factor of u_{j}^n
