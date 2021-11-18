@@ -8,8 +8,8 @@ dt = dx*CFL;
 tend = 6;
 uini = zeros(Nx,1);
 grid on
-xlabel('x \rightarrow')
-ylabel('u \rightarrow')
+xlabel('x')
+ylabel('u')
 global A
 if method == 1 && bound == 1
     %%% calling upwind sin

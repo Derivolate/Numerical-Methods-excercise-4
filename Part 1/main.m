@@ -1,12 +1,15 @@
 clear all
 close all
 clc
+set(0,'defaultTextInterpreter','latex');
+set(0, 'defaultLegendInterpreter','latex');
+set(0, 'defaultAxesTickLabelInterpreter','latex');
 D = 4.5;
 a = 1;
 tau = 2.2;
 Nx = 100; % number of spatial grid points
 dx = D/(Nx-1);
-CFL = 0.7;
+CFL = 0.9;
 dt = dx*CFL;
 tend = 6;
 uini = zeros(Nx,1);
@@ -88,14 +91,14 @@ subplot(2,1,1)
 plot(x,uexactsin(:,end),'k',x,sol_upwind_sin(:,end),'b',x,sol_laxfriedrich_sin(:,end),'c',x,sol_laxwendroff_sin(:,end),'r')
 legend('exact solution', 'upwind','Lax-Friedrich','Lax-Wendroff')
 grid on
-xlabel('x \rightarrow')
-ylabel('solution \rightarrow')
+xlabel('x')
+ylabel('u')
 subplot(2,1,2)
 plot(x,uexactsq(:,end),'k',x,sol_upwind_sq(:,end),'b',x,sol_laxfriedrich_sq(:,end),'c',x,sol_laxwendroff_sq(:,end),'r')
 legend('exact solution', 'upwind','Lax-Friedrich','Lax-Wendroff')
 grid on
-xlabel('x \rightarrow')
-ylabel('solution \rightarrow')
+xlabel('x')
+ylabel('u')
 %%%%% end of plot
 %Initial condition functions
 function u0 = gsin(t, tau)

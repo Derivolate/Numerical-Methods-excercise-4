@@ -34,6 +34,9 @@ function solnext = laxwendroff(sol,u0)
     end
     b = [u0*chi+theta;ones(Nx-4,1)*theta;uN*phi+theta];
     A = sparse(A);
+    size(ui)
+    size(A)
+    size(b)
     unext = [u0;A*ui+b;uN];
     solnext = [sol,unext];
 end

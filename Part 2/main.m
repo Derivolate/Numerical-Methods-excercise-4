@@ -26,26 +26,34 @@ dt = dx*CFL; % time step length
 tend = 6; % maximum time
 uini = zeros(Nx,1);
 uini(:) = Tcool; % specifying initial conditions
-sol = uini;
+sol_upwind = uini;
+sol_laxwendroff = uini;
 %%%%%%%%% upwind
 global A
 clear A;
 for t = dt:dt:tend
     u0 = boundary(t);
-    %sol = upwind(sol,u0);
-    sol = laxwendroff(sol,u0);
+    sol_upwind = upwind(sol_upwind,u0);
+   % sol_laxwendroff = laxwendroff(sol_laxwendroff,u0);
 end
 
 %%%%%%%%%
 %%%%% plot
-x = linspace(0,5,length(sol(:,1)));
-t = linspace(0,6,length(sol(1,:)));
+x = linspace(0,5,length(sol_upwind(:,1)));
+t = linspace(0,6,length(sol_upwind(1,:)));
 [X,T] = meshgrid(t,x);
-mesh(X,T,sol)
+subplot(1,2,1)
+mesh(X,T,sol_upwind)
 grid on
 xlabel('time')
 ylabel('x')
 zlabel('Temperature')
+mesh(X,T,sol_laxwendroff)
+grid on
+xlabel('time')
+ylabel('x')
+zlabel('Temperature')
+subplot(1,2,2)
 %%%%% end of plot
 
 % function that generates boundary conditions u0(t) at x = 0
