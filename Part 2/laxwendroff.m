@@ -19,7 +19,7 @@ function solnext = laxwendroff(sol,u0)
     if(size(sol,2) >2)
         uNm1 = sol(end-1,end);
         uNm2 = sol(end-2,end);
-        uN = extrapolate(uNm1, uNm2);
+        uN =2*uNm1 - uNm2;
     else
         uN = 0;
     end
