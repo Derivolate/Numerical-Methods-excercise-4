@@ -11,10 +11,11 @@ grid on
 xlabel('x')
 ylabel('u')
 global A
+clear global A
+    global A
 if method == 1 && bound == 1
     %%% calling upwind sin
-    clear global A
-    global A
+    
     sol_upwind_sin = uini;
     for t = dt:dt:tend
         u0 = gsin(t,tau);
@@ -26,8 +27,6 @@ if method == 1 && bound == 1
     plot(x,sol_upwind_sin(:,end))
 elseif method == 2 && bound == 1
     %%% calling Lax Friedrich sin
-    clear global A
-    global A
     sol_laxfriedrich_sin = uini;
     for t = dt:dt:tend
         u0 = gsin(t,tau);
@@ -39,8 +38,6 @@ elseif method == 2 && bound == 1
     plot(x,sol_laxfriedrich_sin(:,end))
 elseif method == 3 && bound == 1
     %%% calling Lax Wendroff sin
-    clear global A
-    global A
     sol_laxwendroff_sin = uini;
     for t = dt:dt:tend
         u0 = gsin(t,tau);
@@ -65,8 +62,6 @@ elseif method == 1 && bound == 2
     plot(x,sol_upwind_sq(:,end))
 elseif method == 2 &&  bound == 2
     %%% calling Lax Friedrich sq
-    clear global A
-    global A
     sol_laxfriedrich_sq = uini;
     for t = dt:dt:tend
         u0 = gsq(t,tau);
@@ -79,8 +74,6 @@ elseif method == 2 &&  bound == 2
 elseif method == 3 &&  bound == 2
     %%% calling Lax
     % Wendroff sq
-    clear global A
-    global A
     sol_laxwendroff_sq = uini;
     for t = dt:dt:tend
         u0 = gsq(t,tau);
