@@ -21,7 +21,7 @@ function solnext = laxwendroff(sol,u0)
         uNm2 = sol(end-2,end);
         uN =2*uNm1 - uNm2;
     else
-        uN = 0;
+        uN = 50;
     end
     if isempty(A)
         psi = 1-b*dt*(1-b*dt/2)-sigma^2;
@@ -34,9 +34,6 @@ function solnext = laxwendroff(sol,u0)
     end
     b = [u0*chi+theta;ones(Nx-3,1)*theta;uN*phi+theta];
     A = sparse(A);
-    size(ui)
-    size(A)
-    size(b)
     unext = [A*ui+b;uN];
     solnext = [sol,unext];
 end
