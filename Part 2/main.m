@@ -41,7 +41,7 @@ for t = dt:dt:tend
     sol_laxwendroff = laxwendroff(sol_laxwendroff,u0);
 end
 %%%%%%%%%
-%%%%% plot
+%%%%% plot for (a)
 x = linspace(0,5,length(sol_upwind(:,1)));
 t = linspace(0,6,length(sol_upwind(1,:)));
 [X,T] = meshgrid(t,x);
@@ -61,6 +61,29 @@ zlabel('Temperature')
 
 %%%%% end of plot
 
+%%%%%%%% plot for (b)
+x = linspace(0,5,length(sol_upwind(:,1)));
+subplot(1,2,1)
+t_3 = round(length(sol_upwind(1,:))/2)
+t_6 = length(sol_upwind(1,:))
+plot(x,sol_upwind(:,t_3));
+grid on
+hold on
+plot(x,sol_laxwendroff(:,t_3));
+title('t = 3')
+xlabel('position x')
+ylabel('Temperature T')
+legend('upwind','Lax Wendroff')
+subplot(1,2,2)
+plot(x,sol_upwind(:,t_6));
+grid on
+hold on
+plot(x,sol_laxwendroff(:,t_6));
+title('t = 6')
+xlabel('position x')
+ylabel('Temperature T')
+legend('upwind','Lax Wendroff')
+%%%%%%
 % function that generates boundary conditions u0(t) at x = 0
 function u0 = boundary(t)
     Tcool = 50;
