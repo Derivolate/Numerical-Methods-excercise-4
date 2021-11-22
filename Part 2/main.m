@@ -14,14 +14,14 @@ global Thot;
 global dx;
 global dt;
 
-Nx = 100; % number of spatial grid points 
+Nx = 50; % number of spatial grid points 
 v = 1; % velocity of fluid
 alpha = 0.5; % heat exchange parameter
 L = 5; % length of the pipe
 Tcool = 50; % temperature of the cooling
 Thot = 200; % temperature of the hot whatever
 dx = L/(Nx-1); % spatial steplength
-CFL = 0.9; % CFL number
+CFL = 0.8; % CFL number
 dt = dx*CFL; % time step length
 tend = 6; % maximum time
 uini = zeros(Nx,1);
