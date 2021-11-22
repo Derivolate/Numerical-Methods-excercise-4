@@ -23,7 +23,7 @@ function solnext = laxwendroff(sol,dt,dx,u0,Nx)
     end
 
     
-    b = [u0*alpha;zeros(Nx-3,1);uN*beta];
+    b = [u0*alpha;zeros(Nx-3,1);uN*gamma];
     unext = [A*ui+b;uN];
     solnext = [sol,unext];
 end
